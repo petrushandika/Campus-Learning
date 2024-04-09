@@ -375,3 +375,16 @@ db.products.updateOne(
     },
   }
 );
+
+db.products.find({ _id: 2 });
+
+db.products.updateOne(
+  {
+    _id: 2,
+  },
+  {
+    $pop: {
+      ratings: 1,
+    },
+  }
+);
