@@ -100,3 +100,58 @@ $elemMatch  // Retrieves documents if each element in the array meets certain co
 $size       // Retrieves documents if the array size matches
 ```
 
+### Projection Operator
+
+```mongodb
+// Projection Operator
+db.<collection>.find(query, projection)
+$           // Limit array to return only the first data that matches with array operator
+$elemMatch  // Limit array to return only the first data that matches with query condition
+$meta       // Returns metadata information obtained from each matching document
+$slice      // Controls the amount of data displayed in the array
+```
+
+### Query Modifier Function
+
+```mongodb
+// Query Modifier Function
+count()     // Get the count of data resulting from the query
+limit(size) // Limit the number of data obtained from the query
+skip(size)  // Skip the first data resulting from the query by the specified amount
+sort(query) // Sort the query result data
+```
+
+### Update Document Function
+
+```mongodb
+// Update Document Function
+updateOne() // Update one document
+updateMany()// Update many documents at once
+replaceOne()// Replace one document entirely with a new document
+```
+
+### Field Update Operator
+
+```mongodb
+// Field Update Operator
+$set            // Modify the value of a field in the document
+$unset          // Remove a field from the document
+$rename         // Rename a field in the document
+$inc            // Increment the value of a number field by a certain amount
+$currentDate    // Modify a field to the current date and time
+```
+
+### Array Update Operator
+
+```mongodb
+// Array Update Operator
+$               // Update the first array data that matches the query condition
+$[]             // Update all array data that matches the query condition
+$[<identifier>]// Update all array data that matches the arrayFilters condition
+<index>         // Update array data according to the index number
+$addToSet       // Add a value to the array, ignored if it already exists
+$pop            // Remove the first (-1) or last (1) element from the array
+$pull           // Remove all elements in the array that match the condition
+$push           // Add an element to the array
+$pullAll        // Remove all elements in the array
+```
