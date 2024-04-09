@@ -195,3 +195,183 @@ db.products.find(
   }
 );
 
+// Find data with Query Modifier Function
+db.products.find({}).count();
+
+db.products.find({}).limit(4);
+
+db.products.find({}).skip(2).limit(4);
+
+db.products.find({}).sort({ category: 1, name: -1 }).limit(4);
+
+// Update data with Update Document Function
+db.products.updateOne(
+  { _id: 1 },
+  { $set: { name: "Fried Chicken", category: "food" } }
+);
+
+db.products.updateOne({ _id: 2 }, { $set: { category: "food" } });
+
+db.products.updateMany(
+  { $and: [{ category: { $eq: "food" } }, { tags: { $exists: false } }] },
+  { $set: { tags: ["food"] } }
+);
+
+db.products.insertOne({ _id: 11, name: "Ups salah", wrong: "salah" });
+
+db.products.replaceOne(
+  { _id: 11 },
+  {
+    name: "Adidas Running Shoes",
+    price: new NumberLong("1200000"),
+    category: "shoes",
+    tags: ["adidas", "running", "shoes"],
+  }
+);
+
+// Update data with Field Operator
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      stock: 0,
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $inc: {
+      stock: 10,
+    },
+  }
+);
+
+db.customers.updateMany(
+  {},
+  {
+    $rename: {
+      name: "full_name",
+    },
+  }
+);
+
+db.customers.updateMany(
+  {},
+  {
+    $set: {
+      wrong: "ups",
+    },
+  }
+);
+
+db.customers.updateMany(
+  {},
+  {
+    $unset: {
+      wrong: "",
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $currentDate: {
+      lastModified: {
+        $type: "date",
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      ratings: [90, 80, 70],
+    },
+  }
+);
+
+db.products.updateMany(
+  {
+    ratings: 90,
+  },
+  {
+    $set: {
+      "ratings.$": 100,
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      "ratings.$[]": 100,
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      ratings: [90, 80, 70],
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      "ratings.$[element]": 100,
+    },
+  },
+  {
+    arrayFilters: [
+      {
+        element: {
+          $gte: 80,
+        },
+      },
+    ],
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      "ratings.0": 50,
+      "ratings.1": 60,
+    },
+  }
+);
+
+db.products.find({ _id: 1 });
+
+db.products.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $addToSet: {
+      tags: "popular",
+    },
+  }
+);
+
+db.products.updateOne(
+  {
+    _id: 1,
+  },
+  {
+    $pop: {
+      ratings: -1,
+    },
+  }
+);
