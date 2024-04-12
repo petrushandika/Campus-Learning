@@ -388,3 +388,229 @@ db.products.updateOne(
     },
   }
 );
+
+db.products.updateMany(
+  {},
+  {
+    $set: {
+      ratings: [90, 80, 70],
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $pull: {
+      ratings: {
+        $gte: 80,
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $push: {
+      ratings: 100,
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $pullAll: {
+      ratings: [100, 0],
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $push: {
+      ratings: {
+        $each: [100, 200, 300],
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $addToSet: {
+      tags: {
+        $each: ["trending", "popular"],
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $push: {
+      tags: {
+        $each: ["hot"],
+        $position: 1,
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $push: {
+      ratings: {
+        $each: [100, 200, 300, 400, 500],
+        $sort: -1,
+      },
+    },
+  }
+);
+
+db.products.updateMany(
+  {},
+  {
+    $push: {
+      ratings: {
+        $each: [100, 200, 300, 400, 500],
+        $slice: 10,
+        $sort: -1,
+      },
+    },
+  }
+);
+
+db.customers.insertOne({
+  _id: "spammer",
+  full_name: "Spammer",
+});
+
+db.customers.deleteOne({
+  _id: "spammer",
+});
+
+db.customers.insertMany([
+  {
+    _id: "spammer1",
+    full_name: "Spammer",
+  },
+  {
+    _id: "spammer2",
+    full_name: "Spammer",
+  },
+  {
+    _id: "spammer3",
+    full_name: "Spammer",
+  },
+]);
+
+db.customers.deleteMany({
+  _id: {
+    $regex: "spammer",
+  },
+});
+
+db.customers.bulkWrite([
+  {
+    insertOne: {
+      document: {
+        _id: "eko",
+        full_name: "Eko",
+      },
+    },
+  },
+  {
+    insertOne: {
+      document: {
+        _id: "kurniawan",
+        full_name: "Kurniawan",
+      },
+    },
+  },
+  {
+    updateMany: {
+      filter: {
+        _id: {
+          $in: ["eko", "kurniawan", "khaneddy"],
+        },
+      },
+      update: {
+        $set: {
+          full_name: "Eko Kurniawan Khaneddy",
+        },
+      },
+    },
+  },
+]);
+
+db.products.createIndex({
+  category: 1,
+});
+
+db.products.dropIndex("category_1");
+
+db.products.find({
+  category: "food",
+});
+
+db.products
+  .find({
+    category: "food",
+  })
+  .explain();
+
+db.products
+  .find({
+    category: "food",
+  })
+  .sort({
+    category: 1,
+  })
+  .explain();
+
+db.products
+  .find({
+    category: "food",
+  })
+  .sort({
+    category: -1,
+  })
+  .explain();
+
+db.products
+  .find({
+    tags: "samsung",
+  })
+  .explain();
+
+db.products.createIndex({
+  stock: 1,
+  tags: 1,
+});
+
+db.products.find({
+  stock: 10,
+  tags: "popular",
+});
+
+db.products
+  .find({
+    stock: 10,
+    tags: "popular",
+  })
+  .explain();
+
+db.products
+  .find({
+    name: "samsung",
+    tags: "popular",
+  })
+  .explain();
+
+
