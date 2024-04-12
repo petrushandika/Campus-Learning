@@ -155,3 +155,40 @@ $pull           // Remove all elements in the array that match the condition
 $push           // Add an element to the array
 $pullAll        // Remove all elements in the array
 ```
+
+### Array Update Operator Modifier
+
+```mongodb
+// Array Update Operator Modifier
+$each       // Used in $addToSet and $push to add multiple elements
+$position   // Used in $push to change the position of adding data
+$slice      // Used in $push to determine the maximum number of array data
+$sort       // Used to sort the array after the $push operation
+```
+
+### Delete Document Function
+
+```mongodb
+// Delete Document Function
+db.<collection>.deleteOne(query)   // Deletes one document that matches the query condition
+db.<collection>.deleteMany(query)  // Deletes many documents that match the query condition
+```
+
+### Bulk Write Function
+
+```mongodb
+// Bulk Write Function
+db.<collection>.insertMany()   // Insert multiple documents at once
+db.<collection>.updateMany()   // Update multiple documents at once
+db.<collection>.deleteMany()   // Delete multiple documents at once
+db.<collection>.bulkWrite()    // Perform bulk write operations (insert, update, delete) at once
+```
+
+### Create Index Function
+
+```mongodb
+// Create Index Function
+db.<collection>.createIndex()   // Create an index on the collection
+db.<collection>.getIndexes()    // View all indexes on the collection
+db.<collection>.dropIndex()     // Drop an index on the collection
+```
