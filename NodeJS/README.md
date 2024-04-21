@@ -34,3 +34,17 @@ The `fs` (File System) module in Node.js is a standard library used to manipulat
 To run code in debug mode with Node.js, you need to use a specific command-line flag. By default, files with the `.js` extension don't run in debug mode. To enable debugging, use the `inspect` flag:
 ```bash
 node --inspect filename.js
+```
+This starts a debugging server, allowing you to connect with a debugging client or integrated development environment (IDE) for interactive debugging.
+
+### Breakpoint
+A breakpoint is a marker in your code where execution will pause when debugging, allowing you to inspect variables, evaluate expressions, or step through code. Breakpoints are commonly set in debugging tools or IDEs.
+
+### DNS (Domain Name System)
+The `dns` module in Node.js provides methods for interacting with the Domain Name System. It allows you to perform DNS lookups, resolve domain names to IP addresses, and perform other DNS-related operations. This can be useful for network-related applications.
+
+### Events
+The `events` module in Node.js provides a mechanism to work with event-driven programming. It allows you to create event emitters, emit events, and set up listeners that respond to specific events. This module is foundational for creating scalable and responsive applications in Node.js.
+
+### Globals
+Node.js includes several global objects that are available throughout your code, like `console`, `process`, and `global`. These objects offer functionality that can be used across different parts of your Node.js application. However, it's recommended to use them carefully to avoid unintended side effects.
